@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<properties>
+		<property name="driver" value="com.mysql.jdbc.Driver" />
+		<property name="username" value="root" />
+	</properties>
+
+	<typeAliases>
+		<!-- 通过package, 可以直接指定package的名字， mybatis会自动扫描你指定包下面的javabean, 并且默认设置一个别名，默认的名字为： 
+			javabean 的首字母小写的非限定类名来作为它的别名。 也可在javabean 加上注解@Alias 来自定义别名， 例如： @Alias(user) 
+		<package name="me.kagami.mybatisread"/> -->
+		
+		<typeAlias alias="User" type="me.kagami.mybatisread.User" />
+		<typeAlias alias="Page" type="me.kagami.mybatisread.page.Page" />
+		<!-- 不加 alias的话 可以在Books的类里加@Alias注解 ，鸡肋功能。没有注解的话用Class.getSimpleName()方法取名-->
+		<typeAlias type="me.kagami.mybatisread.Books" />
+	</typeAliases>
+	
+	<plugins>
+		<plugin interceptor="me.kagami.mybatisread.page.PageInterceptor"></plugin>
+		<!--加拦截器必须在这里声明-->
+		<plugin interceptor="me.kagami.mybatisread.ExamplePlugin"></plugin>
+		<plugin interceptor="me.kagami.mybatisread.returnlistmap.ListMapPlugin"></plugin>
+	</plugins>
+	
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<!-- 配置数据库连接信息 -->
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="jdbc:mysql://localhost:3306/test" />
+				<property name="username" value="${username}" />
+				<property name="password" value="1991" />
+			</dataSource>
+		</environment>
+		<environment id="produce">
+			<transactionManager type="JDBC" />
+			<!-- 配置数据库连接信息 -->
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="jdbc:mysql://localhost:3306/test" />
+				<property name="username" value="${username}" />
+				<property name="password" value="1991" />
+			</dataSource>
+		</environment>
+	</environments>
+
+
+
+	<mappers>
+		<!-- mapper中直接指明Mapper的类名也行 <mapper class="me.kagami.mybatisread.UserMapper"/> 
+			前提是xml文件名与类名一致UserMapper.xml不区分大小写 -->
+		<!-- <package name="me/kagami/mybatisread"/> -->
+		<!-- <mapper class="me.kagemi.mybatisread.UserMapper"/> -->
+		
+		<mapper resource="me/kagami/mybatisread/xml/userMapper.xml" />
+		<mapper resource="me/kagami/mybatisread/xml/booksMapper.xml" />
+		<mapper resource="me/kagami/mybatisread/xml/sqlMapper.xml"/>  
+	</mappers>
+</configuration>
