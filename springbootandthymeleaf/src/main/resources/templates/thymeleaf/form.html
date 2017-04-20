@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Getting Started: Serving Web Content</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<!-- 一个标签只能出现一次th:attr 所以如果需要设置多个属性可以这样写 -->
+	<form th:attr="action=@{/formsubmit},method='get'" >
+		<fieldset>
+			<input type="text" name="email" /> 
+			<input type="submit" value="Subscribe me!"/>
+		</fieldset>
+	</form>
+	
+	<!-- 使用th:attr写很麻烦，可以这样简化 -->
+	<form th:action="@{/formsubmit}" th:method="get" >
+		<fieldset>
+			<input type="text" name="email" /> 
+			<input type="submit" value="Subscribe me!"/>
+		</fieldset>
+	</form>
+
+</body>
+</html>

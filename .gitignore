@@ -64,3 +64,9 @@ spring-mybatis/target/
 spring-mybatis/.settings/
 spring-mybatis/.classpath
 spring-mybatis/.project
+
+springbootandthymeleaf/target/
+springbootandthymeleaf/.settings/
+springbootandthymeleaf/.classpath
+springbootandthymeleaf/.project
+springbootandthymeleaf/log

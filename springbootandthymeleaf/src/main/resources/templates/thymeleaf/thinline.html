@@ -1,0 +1,14 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<head th:include="thymeleaf/header::head ('Inline')"></head>
+</head>
+<script th:inline="javascript">
+	function show(){
+		alert([[${user.name}]]);//用在js中
+	}
+</script>
+<body>
+	<input type="button" onclick="show()" value="Buttow"/> 
+</body>
+</html>

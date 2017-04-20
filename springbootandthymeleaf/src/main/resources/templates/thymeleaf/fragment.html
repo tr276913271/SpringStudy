@@ -1,0 +1,9 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<!-- 引入head和foot 简化页面 同时可以传递参数，用于个性化 -->
+<head th:include="thymeleaf/header::head ('这是head')"></head>
+<body>
+	<p id="a">这里是正文</p>
+	<div th:include="thymeleaf/footer::copy"></div>
+</body>
+</html>

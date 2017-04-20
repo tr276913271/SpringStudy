@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Getting Started: Serving Web Content</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<div th:switch="'admin'">
+		<p th:case="'admin'">User is an administrator</p>
+		<p th:case="other">User is a manager</p>
+		<p th:case="*">User is some other thing</p>
+	</div>
+	
+	<div th:switch="'admina'">
+		<p th:case="'admin'">User is an administrator</p>
+		<p th:case="other">User is a manager</p>
+		<p th:case="*">User is some other thing</p>
+	</div>
+	
+	<!-- remove标签主要是用于美工测试， -->
+	<div th:switch="'admina'" th:remove="all">
+		<p th:case="'admin'">User is an administrator</p>
+		<p th:case="other">User is a manager</p>
+		<p th:case="*">User is some other thing</p>
+	</div>
+</body>
+</html>

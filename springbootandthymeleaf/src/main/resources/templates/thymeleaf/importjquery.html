@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="thymeleaf/header::head ('Import Jquery')"></head>
+<script type="text/javascript">
+	function hideP(){
+		$("#a").hide();
+	}
+	function showP(){
+		$("#a").show();
+	}
+</script>
+<body>
+	<p id="a">这里是正文</p>
+	<input type="button" onclick="hideP()" value="Buttow"/> 
+	<input type="button" onclick="showP()" value="Buttow"/>
+</body>
+</html>

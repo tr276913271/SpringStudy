@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Getting Started: Serving Web Content</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<p th:text="${#dates.createNow()}" />
+	<p th:text="${#dates.createToday()}" />
+	<p th:text="${#dates.format(date, 'dd/MMM/yyyy HH:mm')}" />
+	<p th:text="${#dates.format(date)}" />
+	<p th:text="${#dates.year(date)}" />
+	<p th:text="${#dates.dayOfWeek(date)}"/>
+	
+	<p>---------------------------------------------</p>
+	
+	<p th:text="${#numbers.formatInteger(num,3)}"/>
+	<p th:text="${#numbers.formatInteger(num,3,'COMMA')}"/>
+	<p>---------------------------------------------</p>
+	<p th:text="${#strings.contains(name,'ti')}"/>
+	<p th:text="${#strings.capitalize(name)}"/>
+	<!-- 如果name 大于3 ，则把name替换成... -->
+	<p th:text="${#strings.abbreviate(name,3)}"/>
+</body>
+</html>

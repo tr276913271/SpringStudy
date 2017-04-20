@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Getting Started: Serving Web Content</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>NAME</th>
+			<th>PASSWORD</th>
+		</tr>
+		<!-- iterStat表示遍历中的状态（起什么名字都行）状态有很多，有index,count,odd,size,first,last,even等 -->
+		<tr th:each="user,iterStat  : ${users}">
+			<!-- 使用if的时候不像jsp，if语句中条件是false的话，这个标签都不会显示 相关标签还有th:unless-->
+			<td th:text="${iterStat.count}" th:if="${iterStat.count}==1"></td>
+			<td th:text="${user.name}"></td>
+			<td th:text="${user.password}"></td>
+		</tr>
+	</table>
+
+	<ul>
+		<li th:each="user : ${users}" th:text="${user.name}">Item description here...</li>
+	</ul>
+	
+	<!-- thymeleaf注释-->
+	<!--/* This code will be removed at thymeleaf parsing time! */-->
+</body>
+</html>
