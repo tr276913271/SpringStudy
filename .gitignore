@@ -58,3 +58,9 @@ spring-example/.project
 RemoteSystemsTempFiles/
 .recommenders/
 .metadata/
+Servers/
+
+spring-mybatis/target/
+spring-mybatis/.settings/
+spring-mybatis/.classpath
+spring-mybatis/.project

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowCallbackHandler;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import me.kagami.spring.example.bean.User;
 
@@ -15,9 +16,10 @@ public class UserDao {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
+	@Transactional
 	public User findUserByUserName(final String username) {
 		final User user = new User();
-		String sql = "select * from user where username =?";
+		String sql = "select * from user where name =?";
 		jdbcTemplate.query(sql, new Object[]{username},new RowCallbackHandler() {
 			public void processRow(ResultSet rs) throws SQLException {
 				user.setIduser(rs.getInt(1));

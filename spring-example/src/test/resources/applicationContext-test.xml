@@ -15,12 +15,15 @@
     http://www.springframework.org/schema/websocket
     http://www.springframework.org/schema/websocket/spring-websocket-4.0.xsd
     ">
-    <!-- AOP -->
-    <aop:aspectj-autoproxy/>
-    <bean id="annotationAopServer" class="me.kagami.spring.example.aop.annotation.AnnotationAopServer"/>  
-    <bean id="aopInterceptor" class="me.kagami.spring.example.aop.annotation.AopInterceptor"/>  
-    <!-- AOP END -->
-    
+	<!-- AOP -->
+	<aop:aspectj-autoproxy />
+	<bean id="annotationAopServer"
+		class="me.kagami.spring.example.aop.annotation.AnnotationAopServerImpl" />
+	<bean id="testInterface"
+		class="me.kagami.spring.example.aop.annotation.TestInterfaceImpl" />
+	<bean id="aopInterceptor" class="me.kagami.spring.example.aop.annotation.AopInterceptor" />
+	<!-- AOP END -->
+
 	<context:component-scan base-package="me.kagami.spring.example" />
 	<!-- DataSource -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
@@ -36,13 +39,16 @@
 	</bean>
 	<!-- DataSource 结束 -->
 
-	<!-- WebSocket 开始 -->
-	<bean id="websocket" class="me.kagami.spring.example.service.WebsocketEndPoint" />
-	<websocket:handlers>
-		<websocket:mapping path="/websocket.do" handler="websocket" />
-		<websocket:handshake-interceptors>
-			<bean class="me.kagami.spring.example.service.HandshakeInterceptor" />
-		</websocket:handshake-interceptors>
-	</websocket:handlers>
-	<!-- WebSocket 结束 -->
+	<!-- 事物 -->
+	<bean id="txManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+		p:dataSource-ref="dataSource" />
+
+	<bean id="txTemplate"
+		class="org.springframework.transaction.support.TransactionTemplate">
+		<property name="transactionManager" ref="txManager" />
+	</bean>
+	<!-- 声明使用注解式事务 -->
+	<tx:annotation-driven transaction-manager="txManager" />
+	<!-- 事物 结束 -->
 </beans>  
