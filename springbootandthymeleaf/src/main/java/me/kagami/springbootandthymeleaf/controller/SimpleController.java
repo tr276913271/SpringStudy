@@ -2,16 +2,14 @@ package me.kagami.springbootandthymeleaf.controller;
 
 import java.util.Date;
 
-import me.kagami.springbootandthymeleaf.bean.User;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.boot.SpringApplication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import me.kagami.springbootandthymeleaf.bean.User;
 @Controller
 // 表示在 Model中需要session化的数据
 @SessionAttributes({ "message", "loginTime" })
