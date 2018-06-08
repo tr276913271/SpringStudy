@@ -70,3 +70,12 @@ springbootandthymeleaf/.settings/
 springbootandthymeleaf/.classpath
 springbootandthymeleaf/.project
 springbootandthymeleaf/log
+
+
+multidatasource/target/
+multidatasource/.settings/
+multidatasource/.classpath
+multidatasource/.project
+multidatasource/log
+
+

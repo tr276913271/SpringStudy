@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: multidatasource
+  profiles:
+    active: dev
